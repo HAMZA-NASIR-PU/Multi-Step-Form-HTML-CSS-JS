@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Step Wizard with Validation</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/css/bootstrap.min.css" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+  <div class="container mt-5">
+    <h2 class="text-center">Step wizard with validation.</h2>
+    <p class="text-center">You can use thye validation like what we did.</p>
+
+    <div class="card p-4 shadow-sm">
+
+      <div class="progress-container mb-4 d-flex align-items-center justify-content-between">
+        <div class="step-circle active" id="step-1">1</div>
+        <div class="progress-line" id="progress-1">
+          <div class="progress-line-x" id="progress-x-1" style="margin-left: 0px;"></div>
+        </div>
+        <div class="step-circle" id="step-2">2</div>
+        <div class="progress-line" id="progress-2">
+          <div class="progress-line-x" id="progress-x-2" style="margin-left: 0px;"></div>
+        </div>
+        <div class="step-circle" id="step-3">3</div>
+        <div class="progress-line" id="progress-3">
+          <div class="progress-line-x" id="progress-x-3" style="margin-left: 0px;"></div>
+        </div>
+        <div class="step-circle" id="step-4">4</div>
+      </div>
+
+      <form action="" id="multiStepForm">
+        <!-- Step 1 -->
+        <div class="step active">
+          <h5>Step 1: Personal Information</h5>
+          <div class="row">
+            <div class="col-md-6 mb-3">
+              <label for="firstName" class="form-label">First Name *</label>
+              <input type="text" class="form-control" id="firstName" required>
+              <div class="invalid-feedback" id="firstName-error">This field is required</div>
+            </div>
+            <div class="col-md-6 mb-3">
+              <label for="lastName" class="form-label">Last Name *</label>
+              <input type="text" class="form-control" id="lastName" required>
+              <div class="invalid-feedback" id="lastName-error">This field is required</div>
+            </div>
+          </div>
+          <div class="row">
+            <div class="col-md-6 mb-3">
+              <label for="email" class="form-label">Email Address *</label>
+              <input type="email" class="form-control" id="email" required>
+              <div class="invalid-feedback" id="email-error">This field is required</div>
+              <div class="invalid-feedback" id="email-error-format">Please enter a valid email address</div>
+            </div>
+            <div class="col-md-6 mb-3">
+              <label for="phone" class="form-label">Phone Number *</label>
+              <input type="tel" class="form-control" id="phone" required>
+              <div class="invalid-feedback" id="phone-error">This field is required</div>
+            </div>
+          </div>
+          <button type="button" class="btn btn-primary float-end" onclick="nextStep()">Next</button>
+        </div>
+
+        <!-- Step 2 -->
+        <div class="step">
+          <h5>Step 2: Address Information</h5>
+          <div class="row">
+            <div class="col-md-6 mb-3">
+              <label for="city" class="form-label">Select City *</label>
+              <select id="city" class="form-control" required>
+                <option value="">Select City</option>
+                <option value="New York">New York</option>
+                <option value="Los Angeles">Los Angeles</option>
+              </select>
+              <div class="invalid-feedback" id="city-error">This field is required</div>
+            </div>
+            <div class="col-md-6 mb-3">
+              <label for="dob" class="form-label">date of Birth *</label>
+              <input type="date" class="form-control" id="dob" required>
+              <div class="invalid-feedback" id="dob-error">This field is required</div>
+            </div>
+          </div>
+          <button type="button" class="btn btn-secondary" onclick="prevStep()">Previous</button>
+          <button type="button" class="btn btn-primary float-end" onclick="nextStep()">Next</button>
+        </div>
+
+        <!-- Step 3 -->
+        <div class="step">
+          <h5>Step 3: Additional Information</h5>
+          <div class="mb-3">
+            <label for="comments" class="form-label">Comments</label>
+            <textarea class="form-control" id="comments" rows="4"></textarea>
+          </div>
+          <button type="button" class="btn btn-secondary" onclick="prevStep()">Previous</button>
+          <button type="button" class="btn btn-primary float-end" onclick="nextStep()">Next</button>
+        </div>
+
+        <!-- Step 4 -->
+        <div class="step">
+          <h5>Step 4: Confirm and Submit</h5>
+          <p>Please review all the details before submitting.</p>
+          <div id="preview-container">
+          </div>
+          <button type="button" class="btn btn-secondary" onclick="prevStep()">Previous</button>
+          <button type="submit" class="btn btn-primary float-end">Submit</button>
+        </div>
+      </form>
+    </div>
+  </div>
+
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/js/bootstrap.bundle.min.js"></script>
+  <script src="script.js"></script>
+</body>
+
+</html>

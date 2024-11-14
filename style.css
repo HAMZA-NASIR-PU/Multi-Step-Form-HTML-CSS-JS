@@ -1,0 +1,97 @@
+body {
+    background-color: #1f2c48;
+    color: #ffffff;
+}
+
+h5 {
+    color: #ffffff;
+}
+
+.card {
+    background-color: #2c3a58;
+    border-radius: 12px;
+    padding: 30px;
+    color: #ffffff;
+}
+
+.step-circle {
+    height: 40px;
+    width: 40px;
+    background-color: #49597a;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: bold;
+    color: white;
+    transition: background-color 0.4s ease;
+}
+
+.step-circle.active {
+    background-color: #00d47e;
+}
+
+@keyframes loadProgress {
+    0% {
+        width: 0;
+    }
+    100% {
+        width: 100%;
+    }
+}
+
+.progress-line {
+    height: 5px;
+    background-color: #49597a;
+    flex-grow: 1;
+    margin: 0 10px;
+}
+
+.progress-line-x {
+    background-color: #00b268;
+    height: 5px;
+    width: 0; 
+    transition: width 0.4s ease;
+}
+
+.progress-line-x.active {
+    animation: loadProgress 1s ease forwards;
+}
+
+
+.step {
+    opacity: 0;
+    visibility: hidden;
+    height: 0;
+    overflow: hidden;
+    transition: opacity 0.5s ease, height 0.5s ease;
+}
+
+.step.active {
+    opacity: 1;
+    visibility: visible;
+    height: auto;
+}
+
+.invalid-feedback {
+    display: none;
+}
+
+.btn-primary,
+.btn-success {
+    background-color: #00d47e;
+    border: none;
+}
+
+.btn-primary:hover,
+.btn-success:hover {
+    background-color: #00b268;
+}
+
+.btn-secondary {
+    background-color: #6c757d;
+}
+
+.btn-secondary:hover {
+    background-color: #5a6268;
+}
