@@ -15,9 +15,9 @@ function showStep(stepIndex) {
         stepCircles[index]?.classList.toggle('active', index === stepIndex);
     });
 
-    progressLines.forEach((line, index) => {
-        line.classList.remove('filled');
-    });
+    // progressLines.forEach((line, index) => {
+    //     line.classList.remove('filled');
+    // });
 }
 
 function nextStep() {
@@ -42,6 +42,9 @@ function prevStep() {
     }
 }
 
+
+
+
 function updateStepProgress() {
     stepCircles.forEach((circle, index) => {
         circle.classList.toggle('active', index <= currentStep);
@@ -49,11 +52,9 @@ function updateStepProgress() {
 
     progressLines.forEach((line, index) => {
         if (index < currentStep) {
-            line.classList.add('filled');
-            line.querySelector('.progress-line-x').classList.add('active');
+            line.querySelector('.progress-line-x').style.width = "100%";
         } else {
-            line.classList.remove('filled');
-            line.querySelector('.progress-line-x').classList.remove('active');
+            line.querySelector('.progress-line-x').style.width = "0%";
         }
     });
 }
@@ -102,24 +103,35 @@ function validateStep() {
                 errorElement.style.display = "block";
                 errorFormatElement.style.display = "none";
                 valid = false;
+                triggerShake(input);
             } else if (!input.checkValidity()) {
                 errorElement.style.display = "none";
                 errorFormatElement.style.display = "block";
                 valid = false;
+                triggerShake(input);
             } else {
                 errorElement.style.display = "none";
                 errorFormatElement.style.display = "none";
+                input.classList.remove("shake");
             }
         } else {
             if (!input.checkValidity()) {
                 errorElement.style.display = "block";
                 valid = false;
+                triggerShake(input);
             } else {
                 errorElement.style.display = "none";
+                input.classList.remove("shake");
             }
         }
     });
     return valid;
+}
+
+function triggerShake(input) {
+    input.classList.remove("shake");
+    void input.offsetHeight;
+    input.classList.add("shake");
 }
 
 function updateFieldProgress(filledFields) {
